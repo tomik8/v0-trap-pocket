@@ -211,17 +211,23 @@ export default function TrapPocketLanding() {
             <Button
               size="lg"
               className="bg-gradient-to-r from-purple-600 to-purple-800 hover:from-purple-700 hover:to-purple-900 text-white px-6 sm:px-8 py-3 text-base sm:text-lg font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-purple-500/25 w-full sm:w-auto"
+              asChild
             >
-              <Play className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-              Pre-save
+              <a href="https://open.spotify.com/intl-es/album/7ij8DycKtJQJOO3G6x9Du3" target="_blank" rel="noopener noreferrer">
+                <Play className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+                Escuchar
+              </a>
             </Button>
             <Button
               variant="outline"
               size="lg"
               className="border-purple-400 text-purple-300 hover:bg-purple-900/50 px-6 sm:px-8 py-3 text-base sm:text-lg font-semibold transform hover:scale-105 transition-all duration-300 bg-transparent w-full sm:w-auto"
+              asChild
             >
-              <Youtube className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-              Videoclip
+              <a href="https://youtu.be/1f42am573gk" target="_blank" rel="noopener noreferrer">
+                <Youtube className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+                Videoclip
+              </a>
             </Button>
           </div>
         </div>
