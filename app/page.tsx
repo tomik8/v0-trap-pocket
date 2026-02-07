@@ -187,7 +187,7 @@ export default function TrapPocketLanding() {
             <p className="text-xl md:text-2xl text-purple-200 mb-2 font-sans">FRESCOMENTA</p>
             <div className="flex items-center justify-center gap-2 text-purple-300">
               <Calendar className="w-5 h-5" />
-              <span className="text-lg">Jueves 05/02 - 21.00hs</span>
+              <span className="text-lg">¡Calesita ya disponible!</span>
             </div>
           </div>
 
@@ -260,7 +260,7 @@ export default function TrapPocketLanding() {
           <div className="relative mx-auto max-w-sm mb-5">
             <div
               className="transform hover:scale-105 transition-transform duration-500 cursor-pointer"
-              style={{ transform: `translateY(${scrollY * -0.1}px) scale(${1 + Math.sin(Date.now() * 0.001) * 0.02})` }}
+              style={{ transform: `translateY(${scrollY * -0.03}px) scale(${1 + Math.sin(Date.now() * 0.001) * 0.006})` }}
             >
               <img
                 src="/images/phone-call.png"
@@ -322,17 +322,15 @@ export default function TrapPocketLanding() {
               {tracks.map((track, index) => (
                 <div key={index} className="block">
                   <Card
-                    className={`bg-black/50 border-purple-800/50 hover:border-purple-600 transition-all duration-300 cursor-pointer group ${
-                      index === 0 ? "hover:bg-purple-900/20 hover:shadow-lg hover:shadow-purple-500/20" : ""
-                    }`}
+                    className={`bg-black/50 border-purple-800/50 hover:border-purple-600 transition-all duration-300 cursor-pointer group ${index === 0 ? "hover:bg-purple-900/20 hover:shadow-lg hover:shadow-purple-500/20" : ""
+                      }`}
                     onClick={() => window.open("https://www.youtube.com/watch?v=ESKsCaLHAGQ", "_blank")}
                   >
                     <div className="p-4 sm:p-6 flex items-center justify-between">
                       <div className="flex items-center gap-3 sm:gap-4">
                         <div
-                          className={`w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-purple-600 to-purple-800 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300 ${
-                            index === 0 ? "shadow-lg shadow-purple-500/30" : ""
-                          }`}
+                          className={`w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-purple-600 to-purple-800 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300 ${index === 0 ? "shadow-lg shadow-purple-500/30" : ""
+                            }`}
                         >
                           <span className="text-white font-bold text-sm sm:text-base">{index + 1}</span>
                         </div>
