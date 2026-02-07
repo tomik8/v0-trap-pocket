@@ -187,7 +187,7 @@ export default function TrapPocketLanding() {
             <p className="text-xl md:text-2xl text-purple-200 mb-2 font-sans">FRESCOMENTA</p>
             <div className="flex items-center justify-center gap-2 text-purple-300">
               <Calendar className="w-5 h-5" />
-              <span className="text-lg">¡Calesita ya disponible!</span>
+              <span className="text-lg">Ya disponible</span>
             </div>
           </div>
 
@@ -252,8 +252,8 @@ export default function TrapPocketLanding() {
             </div>
             <p className="text-xl md:text-2xl text-purple-200 mb-2 font-sans">FRESCOMENTA</p>
             <div className="flex items-center justify-center gap-2 text-purple-300">
-              <Calendar className="w-5 h-5" />
-              <span className="text-lg">27/08</span>
+              <Play className="w-5 h-5" />
+              <span className="text-lg">Sin fórmula ni imitación</span>
             </div>
           </div>
 
