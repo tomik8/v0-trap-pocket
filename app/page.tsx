@@ -180,11 +180,12 @@ export default function TrapPocketLanding() {
         <div className="container mx-auto text-center z-10">
           <div className="mb-8 animate-fade-in">
             <div className="flex justify-center items-center w-full">
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 gothic-title mambo-title gothic-flourish text-center mx-auto whitespace-nowrap mt-[27px]">
-                MAMBO
-              </h1>
+              <img
+                src="/images/mambo-title.png"
+                alt="Mambo - Frescomenta"
+                className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl mx-auto mt-[27px] mb-4"
+              />
             </div>
-            <p className="text-xl md:text-2xl text-red-200 mb-2 font-sans">FRESCOMENTA</p>
             <div className="flex items-center justify-center gap-2 text-red-300">
               <Calendar className="w-5 h-5" />
               <span className="text-lg">Ya disponible</span>
