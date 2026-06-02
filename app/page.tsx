@@ -183,7 +183,7 @@ export default function TrapPocketLanding() {
               <img
                 src="/images/mambo-title.png"
                 alt="Mambo - Frescomenta"
-                className="w-full max-w-[160px] sm:max-w-[192px] md:max-w-[224px] lg:max-w-[256px] xl:max-w-[288px] mx-auto mt-[27px] mb-4"
+                className="w-full max-w-[144px] sm:max-w-[173px] md:max-w-[202px] lg:max-w-[230px] xl:max-w-[259px] mx-auto mt-[27px] mb-4"
               />
             </div>
             <div className="flex items-center justify-center gap-2 text-red-300">
