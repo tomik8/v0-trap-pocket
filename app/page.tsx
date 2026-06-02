@@ -186,10 +186,6 @@ export default function TrapPocketLanding() {
                 className="w-full max-w-[144px] sm:max-w-[173px] md:max-w-[202px] lg:max-w-[230px] xl:max-w-[259px] mx-auto mt-[27px] mb-4"
               />
             </div>
-            <div className="flex items-center justify-center gap-2 text-red-300">
-              <Calendar className="w-5 h-5" />
-              <span className="text-lg">Ya disponible</span>
-            </div>
           </div>
 
           {/* YouTube player */}
