@@ -180,7 +180,7 @@ export default function TrapPocketLanding() {
         <div className="container mx-auto text-center z-10">
           <div className="mb-8 animate-fade-in">
             <div className="flex justify-center items-center w-full">
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 gothic-title gothic-flourish text-center mx-auto whitespace-nowrap mt-[27px]" style={{ color: "#FF422A" }}>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 gothic-title mambo-title gothic-flourish text-center mx-auto whitespace-nowrap mt-[27px]">
                 MAMBO
               </h1>
             </div>

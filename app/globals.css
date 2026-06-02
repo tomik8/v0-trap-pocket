@@ -176,6 +176,27 @@
   animation: pulse 2s ease-in-out infinite;
 }
 
+/* Mambo section title override — red palette */
+.mambo-title {
+  background: linear-gradient(135deg, #FF422A, #ff6b52, #ffffff, #FF422A);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% 200%;
+  text-shadow: none;
+  animation: mambo-gradient-shift 3s ease-in-out infinite;
+}
+
+@keyframes mambo-gradient-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
