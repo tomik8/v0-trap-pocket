@@ -164,53 +164,53 @@ export default function TrapPocketLanding() {
         <div className="absolute bottom-20 right-1/3 w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
       </div>
 
-      {/* CALESITA SECTION */}
+      {/* MAMBO SECTION */}
       <section className="relative min-h-screen flex items-center justify-center px-4">
         {/* Background image with overlay */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/calesita-background.jpg"
+            src="/images/mambo-background.jpeg"
             alt=""
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-black/60"></div>
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/80"></div>
+          <div className="absolute inset-0 bg-black/65"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/85"></div>
         </div>
 
         <div className="container mx-auto text-center z-10">
           <div className="mb-8 animate-fade-in">
             <div className="flex justify-center items-center w-full">
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 gothic-title gothic-flourish text-center mx-auto whitespace-nowrap mt-[27px]">
-                CALESITA
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 gothic-title gothic-flourish text-center mx-auto whitespace-nowrap mt-[27px]" style={{ color: "#FF422A" }}>
+                MAMBO
               </h1>
             </div>
-            <p className="text-xl md:text-2xl text-purple-200 mb-2 font-sans">FRESCOMENTA</p>
-            <div className="flex items-center justify-center gap-2 text-purple-300">
+            <p className="text-xl md:text-2xl text-red-200 mb-2 font-sans">FRESCOMENTA</p>
+            <div className="flex items-center justify-center gap-2 text-red-300">
               <Calendar className="w-5 h-5" />
               <span className="text-lg">Ya disponible</span>
             </div>
           </div>
 
-          {/* Video preview */}
+          {/* YouTube player */}
           <div className="relative mx-auto max-w-2xl mb-8">
-            <video
-              className="w-full rounded-lg shadow-2xl border-2 border-purple-600/30"
-              autoPlay
-              loop
-              playsInline
-              controls
-            >
-              <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Calesita-preview-hNayKjx2Etd0BQkwkIbfM0Adg1xs61.mp4" type="video/mp4" />
-              Tu navegador no soporta el elemento de video.
-            </video>
-            <div className="absolute inset-0 bg-purple-500/20 blur-2xl -z-10 rounded-lg"></div>
+            <div className="rounded-lg overflow-hidden shadow-2xl border-2" style={{ borderColor: "#FF422A33" }}>
+              <iframe
+                className="w-full aspect-video"
+                src="https://www.youtube.com/embed/8viDTa-QP0k?autoplay=1&mute=1"
+                title="Mambo - Frescomenta"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+            <div className="absolute inset-0 blur-2xl -z-10 rounded-lg" style={{ backgroundColor: "#FF422A20" }}></div>
           </div>
 
           {/* Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-32">
             <Button
               size="lg"
-              className="bg-gradient-to-r from-purple-600 to-purple-800 hover:from-purple-700 hover:to-purple-900 text-white px-6 sm:px-8 py-3 text-base sm:text-lg font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-purple-500/25 w-full sm:w-auto"
+              className="text-white px-6 sm:px-8 py-3 text-base sm:text-lg font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg w-full sm:w-auto"
+              style={{ backgroundColor: "#FF422A", boxShadow: "0 4px 20px #FF422A40" }}
               asChild
             >
               <a href="https://open.spotify.com/intl-es/album/7ij8DycKtJQJOO3G6x9Du3" target="_blank" rel="noopener noreferrer">
@@ -221,7 +221,8 @@ export default function TrapPocketLanding() {
             <Button
               variant="outline"
               size="lg"
-              className="border-purple-400 text-purple-300 hover:bg-purple-900/50 px-6 sm:px-8 py-3 text-base sm:text-lg font-semibold transform hover:scale-105 transition-all duration-300 bg-transparent w-full sm:w-auto"
+              className="px-6 sm:px-8 py-3 text-base sm:text-lg font-semibold transform hover:scale-105 transition-all duration-300 bg-transparent w-full sm:w-auto"
+              style={{ borderColor: "#FF422A", color: "#FF422A" }}
               asChild
             >
               <a href="https://youtu.be/1f42am573gk" target="_blank" rel="noopener noreferrer">
