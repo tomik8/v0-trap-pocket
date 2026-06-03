@@ -179,9 +179,9 @@ export default function TrapPocketLanding() {
         </div>
 
         {/* Desktop: three-column layout with side carousels */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto hidden lg:flex items-stretch gap-4 py-12">
-          {/* Left carousel */}
-          <div className="flex-shrink-0" style={{ height: "600px" }}>
+        <div className="relative z-10 w-full hidden lg:flex items-stretch gap-3 py-10 px-2" style={{ minHeight: "90vh" }}>
+          {/* Left carousel — full height of the row */}
+          <div className="flex-shrink-0 self-stretch">
             <MamboCarouselLeft />
           </div>
 
@@ -195,8 +195,8 @@ export default function TrapPocketLanding() {
               />
             </div>
 
-            {/* YouTube player */}
-            <div className="relative w-full mb-6">
+            {/* YouTube player — constrained to a compact size */}
+            <div className="relative w-full max-w-md mb-6">
               <div className="rounded-lg overflow-hidden shadow-2xl border-2" style={{ borderColor: "#FF422A33" }}>
                 <iframe
                   className="w-full aspect-video"
@@ -237,8 +237,8 @@ export default function TrapPocketLanding() {
             </div>
           </div>
 
-          {/* Right carousel */}
-          <div className="flex-shrink-0" style={{ height: "600px" }}>
+          {/* Right carousel — full height of the row */}
+          <div className="flex-shrink-0 self-stretch">
             <MamboCarouselRight />
           </div>
         </div>
