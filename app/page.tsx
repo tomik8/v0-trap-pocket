@@ -81,9 +81,9 @@ export default function TrapPocketLanding() {
               className="w-auto max-h-[20vh] mx-auto -mt-4"
             />
 
-            {/* YouTube player — constrained so the trio fits in 100vh */}
-            <div className="relative w-full" style={{ maxHeight: "52vh" }}>
-              <div className="rounded-lg overflow-hidden shadow-2xl border-2 w-full" style={{ borderColor: "#FF422A33", aspectRatio: "16/9", maxHeight: "52vh" }}>
+            {/* YouTube player — height-driven so aspect ratio determines width */}
+            <div className="relative" style={{ height: "48vh", aspectRatio: "16/9" }}>
+              <div className="rounded-lg overflow-hidden shadow-2xl border-2 w-full h-full" style={{ borderColor: "#FF422A33" }}>
                 <iframe
                   className="w-full h-full"
                   src="https://www.youtube.com/embed/8viDTa-QP0k?autoplay=1&mute=1"
@@ -138,8 +138,8 @@ export default function TrapPocketLanding() {
           />
 
           {/* YouTube player */}
-          <div className="relative w-full max-w-lg" style={{ maxHeight: "48vh" }}>
-            <div className="rounded-lg overflow-hidden shadow-2xl border-2 w-full" style={{ borderColor: "#FF422A33", aspectRatio: "16/9", maxHeight: "48vh" }}>
+          <div className="relative" style={{ height: "42vh", aspectRatio: "16/9" }}>
+            <div className="rounded-lg overflow-hidden shadow-2xl border-2 w-full h-full" style={{ borderColor: "#FF422A33" }}>
               <iframe
                 className="w-full h-full"
                 src="https://www.youtube.com/embed/8viDTa-QP0k?autoplay=1&mute=1"
