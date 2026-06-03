@@ -78,7 +78,7 @@ export default function TrapPocketLanding() {
             <img
               src="/images/mambo-title.png"
               alt="Mambo - Frescomenta"
-              className="w-auto max-h-[15vh] mx-auto"
+              className="w-auto max-h-[20vh] mx-auto -mt-4"
             />
 
             {/* YouTube player — constrained so the trio fits in 100vh */}
@@ -134,7 +134,7 @@ export default function TrapPocketLanding() {
           <img
             src="/images/mambo-title.png"
             alt="Mambo - Frescomenta"
-            className="w-auto max-h-[12vh] mx-auto"
+            className="w-auto max-h-[16vh] mx-auto -mt-3"
           />
 
           {/* YouTube player */}
