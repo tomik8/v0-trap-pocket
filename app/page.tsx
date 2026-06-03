@@ -251,7 +251,7 @@ export default function TrapPocketLanding() {
       <section className="py-16 sm:py-20 px-4 bg-gradient-to-r from-purple-950/30 via-black to-purple-950/30">
         <div className="container mx-auto">
           <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 gothic-title">TRACKLIST</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 gothic-title">TRAP POCKET</h2>
             <div className="w-16 sm:w-24 h-1 bg-gradient-to-r from-purple-500 to-purple-300 mx-auto"></div>
           </div>
 
