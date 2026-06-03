@@ -1,24 +1,18 @@
 "use client"
 
-import type React from "react"
-
 import { useState, useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
-import { Play, Volume2, Calendar, Music, Phone, PhoneOff, Youtube, Instagram, MessageCircle, Mail } from "lucide-react"
+import { Play, Volume2, Calendar, Music, Phone, Youtube, Instagram, MessageCircle, Mail } from "lucide-react"
 import { MamboCarouselLeft, MamboCarouselRight, MamboCarouselMobile } from "@/components/mambo-carousel"
 
 export default function TrapPocketLanding() {
   const [isPlaying, setIsPlaying] = useState(false)
   const [currentTrack, setCurrentTrack] = useState(0)
   const [scrollY, setScrollY] = useState(0)
-  const [callAnswered, setCallAnswered] = useState(false)
-  const [slidePosition, setSlidePosition] = useState(0)
-  const [isDragging, setIsDragging] = useState(false)
   const [showComingSoon, setShowComingSoon] = useState(false)
   const [emailCopied, setEmailCopied] = useState(false)
   const [showTracklistPopup, setShowTracklistPopup] = useState(false)
-  const sliderRef = useRef<HTMLDivElement>(null)
   const tracklistRef = useRef<HTMLDivElement>(null)
 
   const tracks = ["Dejé a mi hoe :(", "Samsung Pocket", "Debe estar jugando al padel", "Nada más"]
@@ -34,54 +28,6 @@ export default function TrapPocketLanding() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const handleSlideStart = (e: React.MouseEvent | React.TouchEvent) => {
-    setIsDragging(true)
-    e.preventDefault()
-  }
-
-  const handleSlideMove = (e: MouseEvent | TouchEvent) => {
-    if (!isDragging || !sliderRef.current) return
-
-    const rect = sliderRef.current.getBoundingClientRect()
-    const clientX = "touches" in e ? e.touches[0].clientX : e.clientX
-    const rawPosition = clientX - rect.left - 40
-    const newPosition = Math.max(0, Math.min(rect.width - 80, rawPosition * 1.5)) // 1.5x speed multiplier
-    setSlidePosition(newPosition)
-
-    if (newPosition > rect.width * 0.4) {
-      setCallAnswered(true)
-      setIsDragging(false)
-    }
-  }
-
-  const handleSlideEnd = () => {
-    if (!callAnswered) {
-      setSlidePosition(0)
-    }
-    setIsDragging(false)
-  }
-
-  useEffect(() => {
-    if (isDragging) {
-      const handleMouseMove = (e: MouseEvent) => handleSlideMove(e)
-      const handleTouchMove = (e: TouchEvent) => handleSlideMove(e)
-      const handleMouseUp = () => handleSlideEnd()
-      const handleTouchEnd = () => handleSlideEnd()
-
-      document.addEventListener("mousemove", handleMouseMove)
-      document.addEventListener("touchmove", handleTouchMove)
-      document.addEventListener("mouseup", handleMouseUp)
-      document.addEventListener("touchend", handleTouchEnd)
-
-      return () => {
-        document.removeEventListener("mousemove", handleMouseMove)
-        document.removeEventListener("touchmove", handleTouchMove)
-        document.removeEventListener("mouseup", handleMouseUp)
-        document.removeEventListener("touchend", handleTouchEnd)
-      }
-    }
-  }, [isDragging, callAnswered])
-
   const copyEmailToClipboard = async () => {
     try {
       await navigator.clipboard.writeText("sebalell@hotmail.com")
@@ -96,64 +42,6 @@ export default function TrapPocketLanding() {
 
   const handlePhoneImageClick = () => {
     setShowTracklistPopup(true)
-  }
-
-  if (!callAnswered) {
-    return (
-      <div className="fixed inset-0 bg-black flex flex-col items-center justify-center z-50">
-        <div className="text-center mb-8">
-          <p className="text-white text-sm mb-[4]">3492 69420</p>
-          <p className="text-white text-xl font-semibold mb-1 mt-1">FRESCOMENTA</p>
-          <p className="text-white text-lg my-[-6px]">Llamada entrante</p>
-        </div>
-
-        <div className="relative mb-12">
-          <div className="w-48 h-64 rounded-lg overflow-hidden mx-auto mb-[-42px] mt-[-22px]">
-            <img src="/images/phone-call.png" alt="Frescomenta calling" className="w-full h-full object-contain" />
-          </div>
-          <div className="absolute inset-0 bg-purple-500/20 blur-3xl -z-10 animate-pulse"></div>
-        </div>
-
-        <div className="text-center mb-16">
-          <h2 className="text-white text-2xl font-bold mb-2 mt-4">FRESCOMENTA</h2>
-          <p className="text-purple-300 my-[-2px]">TRAP POCKET </p>
-        </div>
-
-        <div className="w-80 max-w-[90vw]">
-          <p className="text-white text-center text-sm mb-[9px]">Desliza para atender</p>
-
-          <div ref={sliderRef} className="relative bg-gray-800 rounded-full h-20 flex items-center px-2">
-            <div className="absolute inset-2 bg-gray-700 rounded-full"></div>
-
-            <div
-              className="absolute w-16 h-16 bg-green-500 rounded-full flex items-center justify-center cursor-pointer z-10 transition-all duration-200 hover:bg-green-400"
-              style={{
-                left: `${slidePosition + 8}px`,
-                boxShadow: "0 4px 20px rgba(34, 197, 94, 0.4)",
-              }}
-              onMouseDown={handleSlideStart}
-              onTouchStart={handleSlideStart}
-            >
-              <Phone className="w-8 h-8 text-white" />
-            </div>
-
-            <div className="absolute right-2 w-16 h-16 bg-red-500 rounded-full flex items-center justify-center">
-              <PhoneOff className="w-8 h-8 text-white" />
-            </div>
-
-            <div className="absolute left-20 flex gap-1">
-              <div className="w-2 h-2 bg-white/50 transform rotate-45"></div>
-              <div className="w-2 h-2 bg-white/50 transform rotate-45"></div>
-              <div className="w-2 h-2 bg-white/50 transform rotate-45"></div>
-            </div>
-          </div>
-        </div>
-
-        <p className="text-gray-400 text-xs text-center px-4 mt-[15px]">
-          Desliza el botón verde hacia la derecha para atender la llamada
-        </p>
-      </div>
-    )
   }
 
   return (
