@@ -177,6 +177,11 @@ export default function TrapPocketLanding() {
             </Button>
           </div>
 
+          {/* Horizontal photo carousel — mobile only */}
+          <div className="w-full">
+            <MamboCarouselMobile />
+          </div>
+
         </div>
       </section>
 

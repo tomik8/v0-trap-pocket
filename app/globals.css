@@ -314,11 +314,21 @@
 
 .mambo-hcarousel-item {
   flex-shrink: 0;
-  width: 200px;
-  height: 140px;
   border-radius: 10px;
   overflow: hidden;
   border: 1px solid #FF422A22;
+}
+
+/* Portrait images: taller and narrower */
+.mambo-hitem-portrait {
+  width: 110px;
+  height: 160px;
+}
+
+/* Landscape images: wider and shorter */
+.mambo-hitem-landscape {
+  width: 220px;
+  height: 140px;
 }
 
 @keyframes mambo-scroll-left {

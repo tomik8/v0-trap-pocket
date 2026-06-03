@@ -94,21 +94,32 @@ function VerticalCarousel({ images, direction }: VerticalCarouselProps) {
 // Horizontal carousel for mobile
 function HorizontalCarousel() {
   const trackRef = useRef<HTMLDivElement>(null)
+  const wrapperRef = useRef<HTMLDivElement>(null)
   const doubled = [...IMAGES, ...IMAGES]
+
+  // Pause auto-scroll while the user is touching/dragging
+  const pauseScroll = () => {
+    if (trackRef.current) trackRef.current.style.animationPlayState = "paused"
+  }
+  const resumeScroll = () => {
+    if (trackRef.current) trackRef.current.style.animationPlayState = "running"
+  }
 
   return (
     <div
+      ref={wrapperRef}
       className="mambo-hcarousel-wrapper"
-      onMouseEnter={() => {
-        if (trackRef.current) trackRef.current.style.animationPlayState = "paused"
-      }}
-      onMouseLeave={() => {
-        if (trackRef.current) trackRef.current.style.animationPlayState = "running"
-      }}
+      onMouseEnter={pauseScroll}
+      onMouseLeave={resumeScroll}
+      onTouchStart={pauseScroll}
+      onTouchEnd={resumeScroll}
     >
       <div ref={trackRef} className="mambo-hcarousel-track mambo-scroll-left">
         {doubled.map((img, i) => (
-          <div key={i} className="mambo-hcarousel-item">
+          <div
+            key={i}
+            className={`mambo-hcarousel-item ${img.aspect === "portrait" ? "mambo-hitem-portrait" : "mambo-hitem-landscape"}`}
+          >
             <img
               src={img.src}
               alt={img.alt}
