@@ -6,6 +6,7 @@ import { useState, useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Play, Volume2, Calendar, Music, Phone, PhoneOff, Youtube, Instagram, MessageCircle, Mail } from "lucide-react"
+import { MamboCarouselLeft, MamboCarouselRight, MamboCarouselMobile } from "@/components/mambo-carousel"
 
 export default function TrapPocketLanding() {
   const [isPlaying, setIsPlaying] = useState(false)
@@ -177,19 +178,83 @@ export default function TrapPocketLanding() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/85"></div>
         </div>
 
-        <div className="container mx-auto text-center z-10">
-          <div className="mb-8 animate-fade-in">
-            <div className="flex justify-center items-center w-full">
+        {/* Desktop: three-column layout with side carousels */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto hidden lg:flex items-stretch gap-4 py-12">
+          {/* Left carousel */}
+          <div className="flex-shrink-0" style={{ height: "600px" }}>
+            <MamboCarouselLeft />
+          </div>
+
+          {/* Center content */}
+          <div className="flex-1 flex flex-col items-center justify-center text-center min-w-0">
+            <div className="mb-6 animate-fade-in">
               <img
                 src="/images/mambo-title.png"
                 alt="Mambo - Frescomenta"
                 className="w-full max-w-[144px] sm:max-w-[173px] md:max-w-[202px] lg:max-w-[230px] xl:max-w-[259px] mx-auto mt-[27px] mb-4"
               />
             </div>
+
+            {/* YouTube player */}
+            <div className="relative w-full mb-6">
+              <div className="rounded-lg overflow-hidden shadow-2xl border-2" style={{ borderColor: "#FF422A33" }}>
+                <iframe
+                  className="w-full aspect-video"
+                  src="https://www.youtube.com/embed/8viDTa-QP0k?autoplay=1&mute=1"
+                  title="Mambo - Frescomenta"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+              <div className="absolute inset-0 blur-2xl -z-10 rounded-lg" style={{ backgroundColor: "#FF422A20" }}></div>
+            </div>
+
+            {/* Buttons */}
+            <div className="flex flex-row gap-4 justify-center items-center">
+              <Button
+                size="lg"
+                className="text-white px-6 py-3 text-base font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg"
+                style={{ backgroundColor: "#FF422A", boxShadow: "0 4px 20px #FF422A40" }}
+                asChild
+              >
+                <a href="https://open.spotify.com/intl-es/album/7ij8DycKtJQJOO3G6x9Du3" target="_blank" rel="noopener noreferrer">
+                  <Play className="w-4 h-4 mr-2" />
+                  Escuchar
+                </a>
+              </Button>
+              <Button
+                variant="outline"
+                size="lg"
+                className="px-6 py-3 text-base font-semibold transform hover:scale-105 transition-all duration-300 bg-transparent"
+                style={{ borderColor: "#FF422A", color: "#FF422A" }}
+                asChild
+              >
+                <a href="https://youtu.be/1f42am573gk" target="_blank" rel="noopener noreferrer">
+                  <Youtube className="w-4 h-4 mr-2" />
+                  Videoclip
+                </a>
+              </Button>
+            </div>
+          </div>
+
+          {/* Right carousel */}
+          <div className="flex-shrink-0" style={{ height: "600px" }}>
+            <MamboCarouselRight />
+          </div>
+        </div>
+
+        {/* Mobile / Tablet: stacked layout */}
+        <div className="relative z-10 w-full lg:hidden flex flex-col items-center text-center px-0">
+          <div className="mb-6 animate-fade-in w-full flex justify-center">
+            <img
+              src="/images/mambo-title.png"
+              alt="Mambo - Frescomenta"
+              className="w-full max-w-[144px] sm:max-w-[173px] mx-auto mt-[27px] mb-4"
+            />
           </div>
 
           {/* YouTube player */}
-          <div className="relative mx-auto max-w-2xl mb-8">
+          <div className="relative w-full max-w-2xl mb-6 px-4">
             <div className="rounded-lg overflow-hidden shadow-2xl border-2" style={{ borderColor: "#FF422A33" }}>
               <iframe
                 className="w-full aspect-video"
@@ -199,11 +264,10 @@ export default function TrapPocketLanding() {
                 allowFullScreen
               />
             </div>
-            <div className="absolute inset-0 blur-2xl -z-10 rounded-lg" style={{ backgroundColor: "#FF422A20" }}></div>
           </div>
 
           {/* Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-32">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6 px-4 w-full">
             <Button
               size="lg"
               className="text-white px-6 sm:px-8 py-3 text-base sm:text-lg font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg w-full sm:w-auto"
@@ -227,6 +291,11 @@ export default function TrapPocketLanding() {
                 Videoclip
               </a>
             </Button>
+          </div>
+
+          {/* Horizontal carousel for mobile */}
+          <div className="w-full mb-8">
+            <MamboCarouselMobile />
           </div>
         </div>
       </section>
