@@ -78,7 +78,7 @@ export default function TrapPocketLanding() {
             <img
               src="/images/mambo-title.png"
               alt="Mambo - Frescomenta"
-              className="w-auto max-h-[20vh] mx-auto -mt-4"
+              className="w-auto max-h-[20vh] mx-auto -mt-4 mb-4"
             />
 
             {/* YouTube player — height-driven so aspect ratio determines width */}
