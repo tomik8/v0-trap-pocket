@@ -54,7 +54,7 @@ export default function TrapPocketLanding() {
       </div>
 
       {/* MAMBO SECTION */}
-      <section className="relative min-h-screen flex items-center justify-center px-4">
+      <section className="relative h-screen flex items-center justify-center px-4 overflow-hidden">
         {/* Background image with overlay */}
         <div className="absolute inset-0 z-0">
           <img
@@ -67,27 +67,25 @@ export default function TrapPocketLanding() {
         </div>
 
         {/* Desktop: three-column layout with side carousels */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto hidden lg:flex items-stretch gap-4 py-12">
+        <div className="relative z-10 w-full h-full hidden lg:flex items-stretch gap-4 py-6">
           {/* Left carousel */}
-          <div className="flex-shrink-0" style={{ height: "600px" }}>
+          <div className="flex-shrink-0 h-full">
             <MamboCarouselLeft />
           </div>
 
-          {/* Center content */}
-          <div className="flex-1 flex flex-col items-center justify-center text-center min-w-0">
-            <div className="mb-6 animate-fade-in">
-              <img
-                src="/images/mambo-title.png"
-                alt="Mambo - Frescomenta"
-                className="w-full max-w-[144px] sm:max-w-[173px] md:max-w-[202px] lg:max-w-[230px] xl:max-w-[259px] mx-auto mt-[27px] mb-4"
-              />
-            </div>
+          {/* Center content — logo + player + buttons all within the viewport height */}
+          <div className="flex-1 flex flex-col items-center justify-center text-center min-w-0 gap-3">
+            <img
+              src="/images/mambo-title.png"
+              alt="Mambo - Frescomenta"
+              className="w-auto max-h-[15vh] mx-auto"
+            />
 
-            {/* YouTube player */}
-            <div className="relative w-full mb-6">
-              <div className="rounded-lg overflow-hidden shadow-2xl border-2" style={{ borderColor: "#FF422A33" }}>
+            {/* YouTube player — constrained so the trio fits in 100vh */}
+            <div className="relative w-full" style={{ maxHeight: "52vh" }}>
+              <div className="rounded-lg overflow-hidden shadow-2xl border-2 w-full" style={{ borderColor: "#FF422A33", aspectRatio: "16/9", maxHeight: "52vh" }}>
                 <iframe
-                  className="w-full aspect-video"
+                  className="w-full h-full"
                   src="https://www.youtube.com/embed/8viDTa-QP0k?autoplay=1&mute=1"
                   title="Mambo - Frescomenta"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -126,26 +124,24 @@ export default function TrapPocketLanding() {
           </div>
 
           {/* Right carousel */}
-          <div className="flex-shrink-0" style={{ height: "600px" }}>
+          <div className="flex-shrink-0 h-full">
             <MamboCarouselRight />
           </div>
         </div>
 
-        {/* Mobile / Tablet: stacked layout */}
-        <div className="relative z-10 w-full lg:hidden flex flex-col items-center text-center px-0">
-          <div className="mb-6 animate-fade-in w-full flex justify-center">
-            <img
-              src="/images/mambo-title.png"
-              alt="Mambo - Frescomenta"
-              className="w-full max-w-[144px] sm:max-w-[173px] mx-auto mt-[27px] mb-4"
-            />
-          </div>
+        {/* Mobile / Tablet: stacked layout — also fits in 100vh */}
+        <div className="relative z-10 w-full h-full lg:hidden flex flex-col items-center justify-center text-center px-4 gap-3">
+          <img
+            src="/images/mambo-title.png"
+            alt="Mambo - Frescomenta"
+            className="w-auto max-h-[12vh] mx-auto"
+          />
 
           {/* YouTube player */}
-          <div className="relative w-full max-w-2xl mb-6 px-4">
-            <div className="rounded-lg overflow-hidden shadow-2xl border-2" style={{ borderColor: "#FF422A33" }}>
+          <div className="relative w-full max-w-lg" style={{ maxHeight: "48vh" }}>
+            <div className="rounded-lg overflow-hidden shadow-2xl border-2 w-full" style={{ borderColor: "#FF422A33", aspectRatio: "16/9", maxHeight: "48vh" }}>
               <iframe
-                className="w-full aspect-video"
+                className="w-full h-full"
                 src="https://www.youtube.com/embed/8viDTa-QP0k?autoplay=1&mute=1"
                 title="Mambo - Frescomenta"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -155,7 +151,7 @@ export default function TrapPocketLanding() {
           </div>
 
           {/* Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6 px-4 w-full">
+          <div className="flex flex-col sm:flex-row gap-3 justify-center items-center w-full px-4">
             <Button
               size="lg"
               className="text-white px-6 sm:px-8 py-3 text-base sm:text-lg font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg w-full sm:w-auto"
@@ -181,10 +177,6 @@ export default function TrapPocketLanding() {
             </Button>
           </div>
 
-          {/* Horizontal carousel for mobile */}
-          <div className="w-full mb-8">
-            <MamboCarouselMobile />
-          </div>
         </div>
       </section>
 
