@@ -86,7 +86,7 @@ export default function TrapPocketLanding() {
               <div className="rounded-lg overflow-hidden shadow-2xl border-2 w-full h-full" style={{ borderColor: "#FF422A33" }}>
                 <iframe
                   className="w-full h-full"
-                  src="https://www.youtube.com/embed/8viDTa-QP0k?autoplay=1&mute=1"
+                  src="https://www.youtube.com/embed/HxL6BDtprgk?autoplay=1&mute=1"
                   title="Mambo - Frescomenta"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
