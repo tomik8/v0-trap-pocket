@@ -176,6 +176,170 @@
   animation: pulse 2s ease-in-out infinite;
 }
 
+/* Mambo section title override — red palette */
+.mambo-title {
+  background: linear-gradient(135deg, #FF422A, #ff6b52, #ffffff, #FF422A);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% 200%;
+  text-shadow: none;
+  animation: mambo-gradient-shift 3s ease-in-out infinite;
+}
+
+@keyframes mambo-gradient-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* ===================== */
+/* Mambo Vertical Carousel */
+/* ===================== */
+
+.mambo-carousel-wrapper {
+  width: 160px;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* Fade edges */
+.mambo-carousel-wrapper::before,
+.mambo-carousel-wrapper::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 80px;
+  z-index: 2;
+  pointer-events: none;
+}
+.mambo-carousel-wrapper::before {
+  top: 0;
+  background: linear-gradient(to bottom, #000000cc, transparent);
+}
+.mambo-carousel-wrapper::after {
+  bottom: 0;
+  background: linear-gradient(to top, #000000cc, transparent);
+}
+
+.mambo-carousel-track {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  will-change: transform;
+}
+
+.mambo-carousel-item {
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 1px solid #FF422A22;
+}
+
+.mambo-item-portrait {
+  height: 220px;
+}
+
+.mambo-item-landscape {
+  height: 105px;
+}
+
+.mambo-carousel-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px;
+}
+
+/* Scroll animations — vertical */
+@keyframes mambo-scroll-up {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+@keyframes mambo-scroll-down {
+  0% { transform: translateY(-50%); }
+  100% { transform: translateY(0); }
+}
+
+.mambo-scroll-up {
+  animation: mambo-scroll-up 22s linear infinite;
+}
+
+.mambo-scroll-down {
+  animation: mambo-scroll-down 22s linear infinite;
+}
+
+/* Horizontal carousel for mobile */
+.mambo-hcarousel-wrapper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.mambo-hcarousel-wrapper::before,
+.mambo-hcarousel-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 60px;
+  z-index: 2;
+  pointer-events: none;
+}
+.mambo-hcarousel-wrapper::before {
+  left: 0;
+  background: linear-gradient(to right, #000000cc, transparent);
+}
+.mambo-hcarousel-wrapper::after {
+  right: 0;
+  background: linear-gradient(to left, #000000cc, transparent);
+}
+
+.mambo-hcarousel-track {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  will-change: transform;
+}
+
+.mambo-hcarousel-item {
+  flex-shrink: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #FF422A22;
+}
+
+/* Portrait images: taller and narrower */
+.mambo-hitem-portrait {
+  width: 110px;
+  height: 160px;
+}
+
+/* Landscape images: wider and shorter */
+.mambo-hitem-landscape {
+  width: 220px;
+  height: 140px;
+}
+
+@keyframes mambo-scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.mambo-scroll-left {
+  animation: mambo-scroll-left 20s linear infinite;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;

@@ -1,23 +1,18 @@
 "use client"
 
-import type React from "react"
-
 import { useState, useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
-import { Play, Volume2, Calendar, Music, Phone, PhoneOff, Youtube, Instagram, MessageCircle, Mail } from "lucide-react"
+import { Play, Volume2, Calendar, Music, Phone, Youtube, Instagram, MessageCircle, Mail } from "lucide-react"
+import { MamboCarouselLeft, MamboCarouselRight, MamboCarouselMobile } from "@/components/mambo-carousel"
 
 export default function TrapPocketLanding() {
   const [isPlaying, setIsPlaying] = useState(false)
   const [currentTrack, setCurrentTrack] = useState(0)
   const [scrollY, setScrollY] = useState(0)
-  const [callAnswered, setCallAnswered] = useState(false)
-  const [slidePosition, setSlidePosition] = useState(0)
-  const [isDragging, setIsDragging] = useState(false)
   const [showComingSoon, setShowComingSoon] = useState(false)
   const [emailCopied, setEmailCopied] = useState(false)
   const [showTracklistPopup, setShowTracklistPopup] = useState(false)
-  const sliderRef = useRef<HTMLDivElement>(null)
   const tracklistRef = useRef<HTMLDivElement>(null)
 
   const tracks = ["Dejé a mi hoe :(", "Samsung Pocket", "Debe estar jugando al padel", "Nada más"]
@@ -32,54 +27,6 @@ export default function TrapPocketLanding() {
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
-
-  const handleSlideStart = (e: React.MouseEvent | React.TouchEvent) => {
-    setIsDragging(true)
-    e.preventDefault()
-  }
-
-  const handleSlideMove = (e: MouseEvent | TouchEvent) => {
-    if (!isDragging || !sliderRef.current) return
-
-    const rect = sliderRef.current.getBoundingClientRect()
-    const clientX = "touches" in e ? e.touches[0].clientX : e.clientX
-    const rawPosition = clientX - rect.left - 40
-    const newPosition = Math.max(0, Math.min(rect.width - 80, rawPosition * 1.5)) // 1.5x speed multiplier
-    setSlidePosition(newPosition)
-
-    if (newPosition > rect.width * 0.4) {
-      setCallAnswered(true)
-      setIsDragging(false)
-    }
-  }
-
-  const handleSlideEnd = () => {
-    if (!callAnswered) {
-      setSlidePosition(0)
-    }
-    setIsDragging(false)
-  }
-
-  useEffect(() => {
-    if (isDragging) {
-      const handleMouseMove = (e: MouseEvent) => handleSlideMove(e)
-      const handleTouchMove = (e: TouchEvent) => handleSlideMove(e)
-      const handleMouseUp = () => handleSlideEnd()
-      const handleTouchEnd = () => handleSlideEnd()
-
-      document.addEventListener("mousemove", handleMouseMove)
-      document.addEventListener("touchmove", handleTouchMove)
-      document.addEventListener("mouseup", handleMouseUp)
-      document.addEventListener("touchend", handleTouchEnd)
-
-      return () => {
-        document.removeEventListener("mousemove", handleMouseMove)
-        document.removeEventListener("touchmove", handleTouchMove)
-        document.removeEventListener("mouseup", handleMouseUp)
-        document.removeEventListener("touchend", handleTouchEnd)
-      }
-    }
-  }, [isDragging, callAnswered])
 
   const copyEmailToClipboard = async () => {
     try {
@@ -97,64 +44,6 @@ export default function TrapPocketLanding() {
     setShowTracklistPopup(true)
   }
 
-  if (!callAnswered) {
-    return (
-      <div className="fixed inset-0 bg-black flex flex-col items-center justify-center z-50">
-        <div className="text-center mb-8">
-          <p className="text-white text-sm mb-[4]">3492 69420</p>
-          <p className="text-white text-xl font-semibold mb-1 mt-1">FRESCOMENTA</p>
-          <p className="text-white text-lg my-[-6px]">Llamada entrante</p>
-        </div>
-
-        <div className="relative mb-12">
-          <div className="w-48 h-64 rounded-lg overflow-hidden mx-auto mb-[-42px] mt-[-22px]">
-            <img src="/images/phone-call.png" alt="Frescomenta calling" className="w-full h-full object-contain" />
-          </div>
-          <div className="absolute inset-0 bg-purple-500/20 blur-3xl -z-10 animate-pulse"></div>
-        </div>
-
-        <div className="text-center mb-16">
-          <h2 className="text-white text-2xl font-bold mb-2 mt-4">FRESCOMENTA</h2>
-          <p className="text-purple-300 my-[-2px]">TRAP POCKET </p>
-        </div>
-
-        <div className="w-80 max-w-[90vw]">
-          <p className="text-white text-center text-sm mb-[9px]">Desliza para atender</p>
-
-          <div ref={sliderRef} className="relative bg-gray-800 rounded-full h-20 flex items-center px-2">
-            <div className="absolute inset-2 bg-gray-700 rounded-full"></div>
-
-            <div
-              className="absolute w-16 h-16 bg-green-500 rounded-full flex items-center justify-center cursor-pointer z-10 transition-all duration-200 hover:bg-green-400"
-              style={{
-                left: `${slidePosition + 8}px`,
-                boxShadow: "0 4px 20px rgba(34, 197, 94, 0.4)",
-              }}
-              onMouseDown={handleSlideStart}
-              onTouchStart={handleSlideStart}
-            >
-              <Phone className="w-8 h-8 text-white" />
-            </div>
-
-            <div className="absolute right-2 w-16 h-16 bg-red-500 rounded-full flex items-center justify-center">
-              <PhoneOff className="w-8 h-8 text-white" />
-            </div>
-
-            <div className="absolute left-20 flex gap-1">
-              <div className="w-2 h-2 bg-white/50 transform rotate-45"></div>
-              <div className="w-2 h-2 bg-white/50 transform rotate-45"></div>
-              <div className="w-2 h-2 bg-white/50 transform rotate-45"></div>
-            </div>
-          </div>
-        </div>
-
-        <p className="text-gray-400 text-xs text-center px-4 mt-[15px]">
-          Desliza el botón verde hacia la derecha para atender la llamada
-        </p>
-      </div>
-    )
-  }
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-purple-950 to-black text-white overflow-hidden">
       <div className="fixed inset-0 opacity-20 pointer-events-none">
@@ -164,53 +53,109 @@ export default function TrapPocketLanding() {
         <div className="absolute bottom-20 right-1/3 w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
       </div>
 
-      {/* CALESITA SECTION */}
-      <section className="relative min-h-screen flex items-center justify-center px-4">
+      {/* MAMBO SECTION */}
+      <section className="relative h-screen flex items-center justify-center px-4 overflow-hidden">
         {/* Background image with overlay */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/calesita-background.jpg"
+            src="/images/mambo-background.jpeg"
             alt=""
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-black/60"></div>
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/80"></div>
+          <div className="absolute inset-0 bg-black/65"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/85"></div>
         </div>
 
-        <div className="container mx-auto text-center z-10">
-          <div className="mb-8 animate-fade-in">
-            <div className="flex justify-center items-center w-full">
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 gothic-title gothic-flourish text-center mx-auto whitespace-nowrap mt-[27px]">
-                CALESITA
-              </h1>
+        {/* Desktop: three-column layout with side carousels */}
+        <div className="relative z-10 w-full h-full hidden lg:flex items-stretch gap-4 py-6">
+          {/* Left carousel */}
+          <div className="flex-shrink-0 h-full">
+            <MamboCarouselLeft />
+          </div>
+
+          {/* Center content — logo + player + buttons all within the viewport height */}
+          <div className="flex-1 flex flex-col items-center justify-center text-center min-w-0 gap-3">
+            <img
+              src="/images/mambo-title.png"
+              alt="Mambo - Frescomenta"
+              className="w-auto max-h-[20vh] mx-auto -mt-4 mb-4"
+            />
+
+            {/* YouTube player — height-driven so aspect ratio determines width */}
+            <div className="relative" style={{ height: "48vh", aspectRatio: "16/9" }}>
+              <div className="rounded-lg overflow-hidden shadow-2xl border-2 w-full h-full" style={{ borderColor: "#FF422A33" }}>
+                <iframe
+                  className="w-full h-full"
+                  src="https://www.youtube.com/embed/HxL6BDtprgk?autoplay=1&mute=1"
+                  title="Mambo - Frescomenta"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+              <div className="absolute inset-0 blur-2xl -z-10 rounded-lg" style={{ backgroundColor: "#FF422A20" }}></div>
             </div>
-            <p className="text-xl md:text-2xl text-purple-200 mb-2 font-sans">FRESCOMENTA</p>
-            <div className="flex items-center justify-center gap-2 text-purple-300">
-              <Calendar className="w-5 h-5" />
-              <span className="text-lg">Ya disponible</span>
+
+            {/* Buttons */}
+            <div className="flex flex-row gap-4 justify-center items-center">
+              <Button
+                size="lg"
+                className="text-white px-6 py-3 text-base font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg"
+                style={{ backgroundColor: "#FF422A", boxShadow: "0 4px 20px #FF422A40" }}
+                asChild
+              >
+                <a href="https://open.spotify.com/intl-es/album/7ij8DycKtJQJOO3G6x9Du3" target="_blank" rel="noopener noreferrer">
+                  <Play className="w-4 h-4 mr-2" />
+                  Escuchar
+                </a>
+              </Button>
+              <Button
+                variant="outline"
+                size="lg"
+                className="px-6 py-3 text-base font-semibold transform hover:scale-105 transition-all duration-300 bg-transparent"
+                style={{ borderColor: "#FF422A", color: "#FF422A" }}
+                asChild
+              >
+                <a href="https://youtu.be/1f42am573gk" target="_blank" rel="noopener noreferrer">
+                  <Youtube className="w-4 h-4 mr-2" />
+                  Videoclip
+                </a>
+              </Button>
             </div>
           </div>
 
-          {/* Video preview */}
-          <div className="relative mx-auto max-w-2xl mb-8">
-            <video
-              className="w-full rounded-lg shadow-2xl border-2 border-purple-600/30"
-              autoPlay
-              loop
-              playsInline
-              controls
-            >
-              <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Calesita-preview-hNayKjx2Etd0BQkwkIbfM0Adg1xs61.mp4" type="video/mp4" />
-              Tu navegador no soporta el elemento de video.
-            </video>
-            <div className="absolute inset-0 bg-purple-500/20 blur-2xl -z-10 rounded-lg"></div>
+          {/* Right carousel */}
+          <div className="flex-shrink-0 h-full">
+            <MamboCarouselRight />
+          </div>
+        </div>
+
+        {/* Mobile / Tablet: stacked layout — also fits in 100vh */}
+        <div className="relative z-10 w-full h-full lg:hidden flex flex-col items-center justify-center text-center px-4 gap-3">
+          <img
+            src="/images/mambo-title.png"
+            alt="Mambo - Frescomenta"
+            className="w-auto max-h-[16vh] mx-auto -mt-3"
+          />
+
+          {/* YouTube player */}
+          <div className="relative" style={{ height: "42vh", aspectRatio: "16/9" }}>
+            <div className="rounded-lg overflow-hidden shadow-2xl border-2 w-full h-full" style={{ borderColor: "#FF422A33" }}>
+              <iframe
+                className="w-full h-full"
+                src="https://www.youtube.com/embed/8viDTa-QP0k?autoplay=1&mute=1"
+                title="Mambo - Frescomenta"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
           </div>
 
           {/* Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-32">
+          <div className="flex flex-col sm:flex-row gap-3 justify-center items-center w-full px-4">
             <Button
               size="lg"
-              className="bg-gradient-to-r from-purple-600 to-purple-800 hover:from-purple-700 hover:to-purple-900 text-white px-6 sm:px-8 py-3 text-base sm:text-lg font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-purple-500/25 w-full sm:w-auto"
+              className="text-white px-6 sm:px-8 py-3 text-base sm:text-lg font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg w-full sm:w-auto"
+              style={{ backgroundColor: "#FF422A", boxShadow: "0 4px 20px #FF422A40" }}
               asChild
             >
               <a href="https://open.spotify.com/intl-es/album/7ij8DycKtJQJOO3G6x9Du3" target="_blank" rel="noopener noreferrer">
@@ -221,7 +166,8 @@ export default function TrapPocketLanding() {
             <Button
               variant="outline"
               size="lg"
-              className="border-purple-400 text-purple-300 hover:bg-purple-900/50 px-6 sm:px-8 py-3 text-base sm:text-lg font-semibold transform hover:scale-105 transition-all duration-300 bg-transparent w-full sm:w-auto"
+              className="px-6 sm:px-8 py-3 text-base sm:text-lg font-semibold transform hover:scale-105 transition-all duration-300 bg-transparent w-full sm:w-auto"
+              style={{ borderColor: "#FF422A", color: "#FF422A" }}
               asChild
             >
               <a href="https://youtu.be/1f42am573gk" target="_blank" rel="noopener noreferrer">
@@ -230,76 +176,26 @@ export default function TrapPocketLanding() {
               </a>
             </Button>
           </div>
+
+          {/* Horizontal photo carousel — mobile only */}
+          <div className="w-full">
+            <MamboCarouselMobile />
+          </div>
+
         </div>
       </section>
 
       {/* Separator between sections */}
       <div className="h-24 bg-gradient-to-b from-black/80 via-purple-950/50 to-black"></div>
 
-      {/* TRAP POCKET SECTION */}
-      <section className="relative min-h-screen flex items-center justify-center px-4">
-        <div
-          className="absolute inset-0 bg-gradient-to-r from-purple-900/20 to-transparent pointer-events-none"
-          style={{ transform: `translateY(${scrollY * 0.5}px)` }}
-        ></div>
-
-        <div className="container mx-auto text-center z-10">
-          <div className="mb-8 animate-fade-in">
-            <div className="flex justify-center items-center w-full">
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 gothic-title gothic-flourish text-center mx-auto whitespace-nowrap mt-[27px]">
-                TRAP POCKET
-              </h1>
-            </div>
-            <p className="text-xl md:text-2xl text-purple-200 mb-2 font-sans">FRESCOMENTA</p>
-            <div className="flex items-center justify-center gap-2 text-purple-300">
-              <Play className="w-5 h-5" />
-              <span className="text-lg">Sin fórmula ni imitación</span>
-            </div>
-          </div>
-
-          <div className="relative mx-auto max-w-sm mb-5">
-            <div
-              className="transform hover:scale-105 transition-transform duration-500 cursor-pointer"
-              style={{ transform: `translateY(${scrollY * -0.03}px) scale(${1 + Math.sin(Date.now() * 0.001) * 0.006})` }}
-            >
-              <img
-                src="/images/phone-call.png"
-                alt="Samsung Pocket with Frescomenta"
-                className="w-full h-auto drop-shadow-2xl"
-              />
-            </div>
-
-            <div className="absolute inset-0 bg-purple-500/20 blur-3xl -z-10 animate-pulse"></div>
-          </div>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center my-[25px]">
-            <div className="flex flex-col items-center gap-2">
-              <Button
-                variant="outline"
-                size="lg"
-                className="border-purple-400 text-purple-300 hover:bg-purple-900/50 px-6 sm:px-8 py-3 text-base sm:text-lg font-semibold transform hover:scale-105 transition-all duration-300 bg-transparent w-full sm:w-auto"
-                onClick={() => window.location.reload()}
-              >
-                <Phone className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                LLAMADA ENTRANTE
-              </Button>
-            </div>
-            <Button
-              size="lg"
-              className="bg-gradient-to-r from-purple-600 to-purple-800 hover:from-purple-700 hover:to-purple-900 text-white px-6 sm:px-8 py-3 text-base sm:text-lg font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-purple-500/25 w-full sm:w-auto"
-              onClick={() => window.open("https://onerpm.link/196020494169", "_blank")}
-            >
-              <Play className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-              TRAP POCKET YA DISPONIBLE
-            </Button>
-          </div>
-        </div>
-      </section>
-
       <section className="py-16 sm:py-20 px-4 bg-gradient-to-r from-purple-950/30 via-black to-purple-950/30">
         <div className="container mx-auto">
           <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 gothic-title">TRACKLIST</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 gothic-title">TRAP POCKET</h2>
+              <p className="text-base sm:text-lg md:text-xl text-purple-200 mb-6 sm:mb-8 leading-relaxed px-4">
+              El sonido del trap desde el Samsung Pocket. Una experiencia nostálgica que conecta la era dorada de los
+              teléfonos básicos con los beats más frescos y sucios del trap actual.
+            </p>
             <div className="w-16 sm:w-24 h-1 bg-gradient-to-r from-purple-500 to-purple-300 mx-auto"></div>
           </div>
 
@@ -361,47 +257,8 @@ export default function TrapPocketLanding() {
         </div>
       </section>
 
-      <section className="py-16 sm:py-20 px-4 bg-gradient-to-r from-black via-purple-950/50 to-black">
-        <div className="container mx-auto text-center">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 sm:mb-8 gothic-title"> Último lanzamiento</h2>
-            <p className="text-base sm:text-lg md:text-xl text-purple-200 mb-6 sm:mb-8 leading-relaxed px-4">
-              El sonido del trap desde el Samsung Pocket. Una experiencia nostálgica que conecta la era dorada de los
-              teléfonos básicos con los beats más frescos y sucios del trap actual.
-            </p>
-
-            <div className="relative max-w-xl sm:max-w-2xl mx-auto mb-6 sm:mb-8">
-              <video
-                className="w-full rounded-lg shadow-2xl cursor-pointer"
-                autoPlay
-                loop
-                muted
-                playsInline
-                onClick={() => setShowTracklistPopup(true)}
-              >
-                <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/celu%20girando-M3vfP3SYmDFnDmR36O4HrZDxdBzfxU.mp4" type="video/mp4" />
-                Tu navegador no soporta el elemento de video.
-              </video>
-              <div className="absolute inset-0 bg-purple-500/10 blur-2xl -z-10 rounded-lg"></div>
-            </div>
-
-            <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-purple-300 px-4">
-              {features.map((feature, index) => {
-                const IconComponent = feature.icon
-                return (
-                  <div
-                    key={index}
-                    className="flex items-center gap-2 hover:text-purple-200 transition-colors duration-300 cursor-pointer"
-                  >
-                    <IconComponent className="w-4 h-4 sm:w-5 sm:h-5" />
-                    <span className="font-medium text-sm sm:text-base">{feature.text}</span>
-                  </div>
-                )
-              })}
-            </div>
-          </div>
-        </div>
-      </section>
+{/* Separator between sections */}
+      <div className="h-24 bg-gradient-to-b from-black/80 via-purple-950/50 to-black"></div>
 
       <section className="py-16 sm:py-20 px-4 bg-gradient-to-r from-purple-950/30 via-black to-purple-950/30">
         <div className="container mx-auto">
