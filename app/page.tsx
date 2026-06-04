@@ -188,66 +188,6 @@ export default function TrapPocketLanding() {
       {/* Separator between sections */}
       <div className="h-24 bg-gradient-to-b from-black/80 via-purple-950/50 to-black"></div>
 
-      {/* TRAP POCKET SECTION */}
-      <section className="relative min-h-screen flex items-center justify-center px-4">
-        <div
-          className="absolute inset-0 bg-gradient-to-r from-purple-900/20 to-transparent pointer-events-none"
-          style={{ transform: `translateY(${scrollY * 0.5}px)` }}
-        ></div>
-
-        <div className="container mx-auto text-center z-10">
-          <div className="mb-8 animate-fade-in">
-            <div className="flex justify-center items-center w-full">
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 gothic-title gothic-flourish text-center mx-auto whitespace-nowrap mt-[27px]">
-                TRAP POCKET
-              </h1>
-            </div>
-            <p className="text-xl md:text-2xl text-purple-200 mb-2 font-sans">FRESCOMENTA</p>
-            <div className="flex items-center justify-center gap-2 text-purple-300">
-              <Play className="w-5 h-5" />
-              <span className="text-lg">Sin fórmula ni imitación</span>
-            </div>
-          </div>
-
-          <div className="relative mx-auto max-w-sm mb-5">
-            <div
-              className="transform hover:scale-105 transition-transform duration-500 cursor-pointer"
-              style={{ transform: `translateY(${scrollY * -0.03}px) scale(${1 + Math.sin(Date.now() * 0.001) * 0.006})` }}
-            >
-              <img
-                src="/images/phone-call.png"
-                alt="Samsung Pocket with Frescomenta"
-                className="w-full h-auto drop-shadow-2xl"
-              />
-            </div>
-
-            <div className="absolute inset-0 bg-purple-500/20 blur-3xl -z-10 animate-pulse"></div>
-          </div>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center my-[25px]">
-            <div className="flex flex-col items-center gap-2">
-              <Button
-                variant="outline"
-                size="lg"
-                className="border-purple-400 text-purple-300 hover:bg-purple-900/50 px-6 sm:px-8 py-3 text-base sm:text-lg font-semibold transform hover:scale-105 transition-all duration-300 bg-transparent w-full sm:w-auto"
-                onClick={() => window.location.reload()}
-              >
-                <Phone className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                LLAMADA ENTRANTE
-              </Button>
-            </div>
-            <Button
-              size="lg"
-              className="bg-gradient-to-r from-purple-600 to-purple-800 hover:from-purple-700 hover:to-purple-900 text-white px-6 sm:px-8 py-3 text-base sm:text-lg font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-purple-500/25 w-full sm:w-auto"
-              onClick={() => window.open("https://onerpm.link/196020494169", "_blank")}
-            >
-              <Play className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-              TRAP POCKET YA DISPONIBLE
-            </Button>
-          </div>
-        </div>
-      </section>
-
       <section className="py-16 sm:py-20 px-4 bg-gradient-to-r from-purple-950/30 via-black to-purple-950/30">
         <div className="container mx-auto">
           <div className="text-center mb-12 sm:mb-16">
