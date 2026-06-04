@@ -193,8 +193,7 @@ export default function TrapPocketLanding() {
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 gothic-title">TRAP POCKET</h2>
               <p className="text-base sm:text-lg md:text-xl text-purple-200 mb-6 sm:mb-8 leading-relaxed px-4">
-              El sonido del trap desde el Samsung Pocket. Una experiencia nostálgica que conecta la era dorada de los
-              teléfonos básicos con los beats más frescos y sucios del trap actual.
+              Último long play de 2025
             </p>
             <div className="w-16 sm:w-24 h-1 bg-gradient-to-r from-purple-500 to-purple-300 mx-auto"></div>
           </div>
