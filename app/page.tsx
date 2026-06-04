@@ -142,7 +142,7 @@ export default function TrapPocketLanding() {
             <div className="rounded-lg overflow-hidden shadow-2xl border-2 w-full h-full" style={{ borderColor: "#FF422A33" }}>
               <iframe
                 className="w-full h-full"
-                src="https://www.youtube.com/embed/8viDTa-QP0k?autoplay=1&mute=1"
+                src="https://www.youtube.com/embed/HxL6BDtprgk?autoplay=1&mute=1"
                 title="Mambo - Frescomenta"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -192,7 +192,7 @@ export default function TrapPocketLanding() {
         <div className="container mx-auto">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 gothic-title">TRAP POCKET</h2>
-              <p className="text-base sm:text-lg md:text-xl text-purple-200 mb-6 sm:mb-8 leading-relaxed px-4">
+            <p className="text-base sm:text-lg md:text-xl text-purple-200 mb-6 sm:mb-8 leading-relaxed px-4">
               Último long play de 2025
             </p>
             <div className="w-16 sm:w-24 h-1 bg-gradient-to-r from-purple-500 to-purple-300 mx-auto"></div>
@@ -256,7 +256,7 @@ export default function TrapPocketLanding() {
         </div>
       </section>
 
-{/* Separator between sections */}
+      {/* Separator between sections */}
       <div className="h-24 bg-gradient-to-b from-black/80 via-purple-950/50 to-black"></div>
 
       <section className="py-16 sm:py-20 px-4 bg-gradient-to-r from-purple-950/30 via-black to-purple-950/30">
