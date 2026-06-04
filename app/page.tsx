@@ -192,6 +192,10 @@ export default function TrapPocketLanding() {
         <div className="container mx-auto">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 gothic-title">TRAP POCKET</h2>
+              <p className="text-base sm:text-lg md:text-xl text-purple-200 mb-6 sm:mb-8 leading-relaxed px-4">
+              El sonido del trap desde el Samsung Pocket. Una experiencia nostálgica que conecta la era dorada de los
+              teléfonos básicos con los beats más frescos y sucios del trap actual.
+            </p>
             <div className="w-16 sm:w-24 h-1 bg-gradient-to-r from-purple-500 to-purple-300 mx-auto"></div>
           </div>
 
@@ -253,47 +257,8 @@ export default function TrapPocketLanding() {
         </div>
       </section>
 
-      <section className="py-16 sm:py-20 px-4 bg-gradient-to-r from-black via-purple-950/50 to-black">
-        <div className="container mx-auto text-center">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 sm:mb-8 gothic-title"> Último lanzamiento</h2>
-            <p className="text-base sm:text-lg md:text-xl text-purple-200 mb-6 sm:mb-8 leading-relaxed px-4">
-              El sonido del trap desde el Samsung Pocket. Una experiencia nostálgica que conecta la era dorada de los
-              teléfonos básicos con los beats más frescos y sucios del trap actual.
-            </p>
-
-            <div className="relative max-w-xl sm:max-w-2xl mx-auto mb-6 sm:mb-8">
-              <video
-                className="w-full rounded-lg shadow-2xl cursor-pointer"
-                autoPlay
-                loop
-                muted
-                playsInline
-                onClick={() => setShowTracklistPopup(true)}
-              >
-                <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/celu%20girando-M3vfP3SYmDFnDmR36O4HrZDxdBzfxU.mp4" type="video/mp4" />
-                Tu navegador no soporta el elemento de video.
-              </video>
-              <div className="absolute inset-0 bg-purple-500/10 blur-2xl -z-10 rounded-lg"></div>
-            </div>
-
-            <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-purple-300 px-4">
-              {features.map((feature, index) => {
-                const IconComponent = feature.icon
-                return (
-                  <div
-                    key={index}
-                    className="flex items-center gap-2 hover:text-purple-200 transition-colors duration-300 cursor-pointer"
-                  >
-                    <IconComponent className="w-4 h-4 sm:w-5 sm:h-5" />
-                    <span className="font-medium text-sm sm:text-base">{feature.text}</span>
-                  </div>
-                )
-              })}
-            </div>
-          </div>
-        </div>
-      </section>
+{/* Separator between sections */}
+      <div className="h-24 bg-gradient-to-b from-black/80 via-purple-950/50 to-black"></div>
 
       <section className="py-16 sm:py-20 px-4 bg-gradient-to-r from-purple-950/30 via-black to-purple-950/30">
         <div className="container mx-auto">
