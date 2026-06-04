@@ -20,7 +20,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "Frescomenta",
-  description: "Calesita - Lanzamiento 05/02",
+  description: "2026",
   generator: "v0.dev",
   icons: {
     icon: "/favicon.ico",
